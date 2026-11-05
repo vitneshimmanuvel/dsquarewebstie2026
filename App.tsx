@@ -24,7 +24,7 @@ import { ProjectProvider } from './ProjectContext';
 import { NotificationProvider, useNotifications } from './NotificationContext';
 import { DataProvider } from './DataContext';
 import { AuthProvider, useAuth } from './AuthContext';
-import { Menu, Bell, Loader2, Lock, Mail, Eye, EyeOff, ArrowUp } from 'lucide-react';
+import { Menu, Bell, Loader2, Lock, Mail, Eye, EyeOff, ArrowUp, LogOut } from 'lucide-react';
 
 const PublicLayout: React.FC<{
   onLoginClick: () => void;
@@ -200,6 +200,7 @@ const ProtectedLayout: React.FC<{
         isOpen={sidebarOpen} 
         onClose={() => setSidebarOpen(false)} 
         unreadCount={unreadCount}
+        userName={user.name}
       />
       
       <div className="flex-1 md:ml-72 flex flex-col min-w-0">
@@ -232,6 +233,16 @@ const ProtectedLayout: React.FC<{
                   onMarkAllRead={markAllAsRead}
                 />
               </div>
+
+              {/* Top Header Logout Button */}
+              <button 
+                onClick={logout}
+                title="Sign Out"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 text-slate-600 hover:text-red-600 hover:border-red-200 hover:bg-red-50 text-xs font-bold transition-all shadow-sm"
+              >
+                <LogOut size={16} />
+                <span className="hidden sm:inline">Logout</span>
+              </button>
            </div>
         </header>
 
