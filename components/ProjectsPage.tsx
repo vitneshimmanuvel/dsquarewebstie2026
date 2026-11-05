@@ -23,9 +23,9 @@ const PROJECTS_POOL: ProjectItem[] = [
     budget: '₹3.5 Cr',
     status: 'Finishing Phase',
     progress: 92,
-    mainImage: 'https://images.unsplash.com/photo-1600596542815-2ad4d9a44566?auto=format&fit=crop&w=800&q=80',
+    mainImage: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
     gallery: [
-      'https://images.unsplash.com/photo-1600596542815-2ad4d9a44566?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80',
@@ -189,6 +189,9 @@ const ProjectsPage: React.FC = () => {
                   <img 
                     src={p.mainImage} 
                     alt={p.title} 
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80';
+                    }}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
@@ -272,6 +275,9 @@ const ProjectsPage: React.FC = () => {
               <img 
                 src={activeProject.gallery[activeImgIdx]} 
                 alt={`Gallery ${activeImgIdx + 1}`} 
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80';
+                }}
                 className="max-h-full max-w-full object-contain animate-scale-up" 
               />
 
@@ -302,7 +308,7 @@ const ProjectsPage: React.FC = () => {
                     activeImgIdx === idx ? 'border-brand-accent scale-105' : 'border-white/20 opacity-50 hover:opacity-85'
                   }`}
                 >
-                  <img src={img} alt="Thumbnail" className="w-full h-full object-cover" />
+                  <img src={img} alt="Thumbnail" onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=200&q=80'; }} className="w-full h-full object-cover" />
                 </button>
               ))}
             </div>

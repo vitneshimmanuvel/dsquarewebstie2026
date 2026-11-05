@@ -108,9 +108,9 @@ const PublicLayout: React.FC<{
           
           <button 
             onClick={onLoginClick}
-            className="bg-brand-primary text-white px-6 py-2.5 rounded-xl font-bold hover:bg-brand-900 transition-all shadow-lg shadow-brand-primary/20 hover:-translate-y-0.5 active:translate-y-0 duration-200 animate-scale-up"
+            className="bg-brand-primary text-white px-6 py-2.5 rounded-xl font-bold hover:bg-brand-900 transition-all shadow-lg shadow-brand-primary/20 hover:-translate-y-0.5 active:translate-y-0 duration-200 animate-scale-up flex items-center gap-2"
           >
-            Client Portal
+            <Lock size={15} /> Sign In 
           </button>
         </div>
       </nav>
@@ -137,6 +137,7 @@ const PublicLayout: React.FC<{
             <button className="hover:text-white transition-colors" onClick={() => navigate('/about')}>About Us</button>
             <button className="hover:text-white transition-colors" onClick={() => navigate('/services')}>Services</button>
             <button className="hover:text-white transition-colors" onClick={() => navigate('/contact')}>Contact Support</button>
+            <button className="hover:text-brand-accent transition-colors font-bold text-xs" onClick={onLoginClick}>Admin / Client Login</button>
           </div>
           <div className="text-sm text-slate-500 font-medium">
             © 2026 D Square Constructions. All rights reserved.
@@ -247,6 +248,17 @@ const ProtectedLayout: React.FC<{
 const AppContent: React.FC = () => {
   const { user, login, isLoading } = useAuth();
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+
+  useEffect(() => {
+    const checkHash = () => {
+      if (!user && (window.location.hash === '#/login' || window.location.hash === '#/admin')) {
+        setIsLoginOpen(true);
+      }
+    };
+    checkHash();
+    window.addEventListener('hashchange', checkHash);
+    return () => window.removeEventListener('hashchange', checkHash);
+  }, [user]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [highlightContact, setHighlightContact] = useState(false);
 
@@ -404,6 +416,22 @@ const AppContent: React.FC = () => {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/get-quote" element={<GetQuotePage />} />
           <Route path="/quote" element={<GetQuotePage />} />
+          <Route 
+            path="/login" 
+            element={
+              user 
+                ? (user.role === UserRole.CUSTOMER ? <Navigate to="/client" replace /> : <Navigate to="/app/dashboard" replace />) 
+                : <LandingPage onLoginClick={() => setIsLoginOpen(true)} />
+            } 
+          />
+          <Route 
+            path="/admin" 
+            element={
+              user 
+                ? (user.role === UserRole.CUSTOMER ? <Navigate to="/client" replace /> : <Navigate to="/app/dashboard" replace />) 
+                : <LandingPage onLoginClick={() => setIsLoginOpen(true)} />
+            } 
+          />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route 

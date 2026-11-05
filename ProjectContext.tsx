@@ -56,7 +56,7 @@ export const ProjectProvider: React.FC<{ children: ReactNode }> = ({ children })
             deadline: p.deadline ? new Date(p.deadline).toISOString().split('T')[0] : '',
             budget: p.budget || 0,
             spent: p.spent || 0,
-            thumbnail: p.thumbnail || 'https://images.unsplash.com/photo-1600596542815-2ad4d9a44566?auto=format&fit=crop&w=600&q=80',
+            thumbnail: p.thumbnail || 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80',
             description: p.description || '',
             milestones: (p.milestones || []).map((m: any) => ({
               id: m.id,

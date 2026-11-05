@@ -27,7 +27,7 @@ export const PROJECTS: Project[] = [
     deadline: '2024-08-15',
     budget: 8500000,
     spent: 3200000,
-    thumbnail: 'https://images.unsplash.com/photo-1600596542815-2ad4d9a44566?auto=format&fit=crop&w=600&q=80',
+    thumbnail: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80',
     description: 'Luxury G+2 Villa with Italian Marble flooring, home automation, and private pool. Currently in structural phase with slab casting scheduled.',
     milestones: [
       { id: 'm1', title: 'Site Clearance & Soil Test', date: '2023-11-05', status: 'Completed', description: 'Ground leveling and soil bearing capacity approved.' },
