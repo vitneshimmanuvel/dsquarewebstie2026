@@ -128,3 +128,183 @@ export const NOTIFICATIONS: Notification[] = [
   { id: 'n2', title: 'Payment Received', message: 'Client Rajesh Gupta transferred $5000 for Phase 2.', date: '5h ago', read: false, type: 'success' },
   { id: 'n3', title: 'Site Inspection', message: 'Quality check scheduled for tomorrow at 10 AM.', date: '1d ago', read: true, type: 'info' },
 ];
+
+
+export interface MaterialOptionGroup {
+  id: string;
+  name: string;
+  category: 'Structural & Masonry' | 'Electrical & Plumbing' | 'Finishes & Sanitary' | 'Doors & Windows';
+  icon: string;
+  description: string;
+  options: string[];
+  defaultOption: string;
+  tip?: string;
+}
+
+export const MATERIAL_SPECS: MaterialOptionGroup[] = [
+  // 1. Cement
+  {
+    id: 'cement',
+    name: 'Cement',
+    category: 'Structural & Masonry',
+    icon: '🏗️',
+    description: 'Foundation, RCC pillars, slab casting & plastering',
+    options: ['Ultratech', 'Ramco', 'Dalmia', 'Chettinad', 'Acc', 'Maha', 'Priya', 'Zuari', 'Jsw'],
+    defaultOption: 'Ultratech',
+    tip: 'Grade 53 OPC for RCC columns & Grade 43 PPC for masonry plastering'
+  },
+  // 2. Sand
+  {
+    id: 'sand',
+    name: 'Sand',
+    category: 'Structural & Masonry',
+    icon: '⏳',
+    description: 'Fine aggregate for casting & brick plastering',
+    options: ['River sand', 'Standard M-sand & P-sand', 'Double washed(VSI) M-Sand & P-Sand'],
+    defaultOption: 'Double washed(VSI) M-Sand & P-Sand',
+    tip: 'VSI double-washed sand offers the highest concrete compressive strength'
+  },
+  // 3. Blue metals:(Aggregate)
+  {
+    id: 'blueMetals',
+    name: 'Blue metals (Aggregate)',
+    category: 'Structural & Masonry',
+    icon: '🪨',
+    description: 'Coarse aggregate 20mm & 40mm for high-tensile concrete',
+    options: ['Standard', 'Finest quality(VSI)'],
+    defaultOption: 'Finest quality(VSI)',
+    tip: 'VSI cubical shaped aggregate ensures zero air pockets during concrete vibration'
+  },
+  // 4. TMT rebars
+  {
+    id: 'tmtRebars',
+    name: 'TMT rebars',
+    category: 'Structural & Masonry',
+    icon: '🔩',
+    description: 'Reinforcement thermo-mechanically treated steel rods',
+    options: ['Tata', 'jsw', 'vizag', 'jindal panther', 'SSI', 'Shyam', 'pulkit', 'prime gold', 'Agni', 'ARS'],
+    defaultOption: 'Tata',
+    tip: 'Fe-550D grade steel with earthquake resistance and corrosion resistance'
+  },
+  // 5. Bricks
+  {
+    id: 'bricks',
+    name: 'Bricks & Masonry Blocks',
+    category: 'Structural & Masonry',
+    icon: '🧱',
+    description: 'Outer load-bearing & inner partition wall masonry',
+    options: ['1st class chamber brick', 'Wirecut brick', 'Flyash brick', 'Solid block', 'porotherm block', 'AAC block', 'Interlock block'],
+    defaultOption: '1st class chamber brick',
+    tip: 'Chamber bricks and Porotherm clay hollow blocks offer natural thermal insulation'
+  },
+  // 6. Electrical Wires/Pipes
+  {
+    id: 'electricalWires',
+    name: 'Electrical Wires & Conduits',
+    category: 'Electrical & Plumbing',
+    icon: '⚡',
+    description: 'Internal concealed wiring & fire-resistant conduits',
+    options: ['RR kabel', 'Finolex', 'Kundan', 'Havells', 'V-guard', 'EFAB', 'R Miller', 'Polycab', 'KEI', 'Anchor'],
+    defaultOption: 'Finolex',
+    tip: 'FRLS (Flame Retardant Low Smoke) 100% pure electrolytic grade copper'
+  },
+  // 7. Electrical switches
+  {
+    id: 'electricalSwitches',
+    name: 'Electrical Switches & Sockets',
+    category: 'Electrical & Plumbing',
+    icon: '🔌',
+    description: 'Modular switch plates, MCBs, DBs & safety breakers',
+    options: ['Legarant', 'Lish', 'GM', 'Havells', 'Schneider', 'L&T', 'Elleys', 'Norisys', 'Anchor'],
+    defaultOption: 'Schneider',
+    tip: 'Modular anti-microbial plates with shock-proof polycarbonate covers'
+  },
+  // 8. Plumping (Plumbing)
+  {
+    id: 'plumbing',
+    name: 'Plumbing & Drainage Pipes',
+    category: 'Electrical & Plumbing',
+    icon: '🚰',
+    description: 'Hot & cold CPVC lines, UPVC water supply & SWR drainage',
+    options: ['Finolex', 'Astral', 'supreme', 'prince'],
+    defaultOption: 'Astral',
+    tip: 'Lead-free NSF-certified CPVC pipes tested for high water pressure'
+  },
+  // 9. Cp/ Sanitarywares
+  {
+    id: 'sanitaryware',
+    name: 'CP Fittings & Sanitarywares',
+    category: 'Finishes & Sanitary',
+    icon: '🚿',
+    description: 'Water closets, faucets, showers, wash basins & divertors',
+    options: ['Kohler', 'Jaquar', 'parryware', 'Roca', 'Toto', 'Cera', 'Hindware', 'Johnson', 'RAK', 'Grohe', 'Duravit', 'American standard', 'Somany', 'Simpolo'],
+    defaultOption: 'Jaquar',
+    tip: 'Water-saving dual-flush ceramic closets & 10-year warranty brass taps'
+  },
+  // 10. Tiles
+  {
+    id: 'tiles',
+    name: 'Flooring & Wall Tiles',
+    category: 'Finishes & Sanitary',
+    icon: '⬜',
+    description: 'Living room vitrified tiles, anti-skid bathroom & kitchen dados',
+    options: ['Simpolo', 'simero', 'Kajaria', 'KAG', 'Somany', 'Orientbell', 'Johnson', 'Nitco', 'RAK', 'Varmora', 'Qutone', 'AGL'],
+    defaultOption: 'Kajaria',
+    tip: 'Double-charged GVT/PGVT vitrified tiles with nano polish coating'
+  },
+  // 11. Maindoor
+  {
+    id: 'maindoor',
+    name: 'Main Entrance Door',
+    category: 'Doors & Windows',
+    icon: '🚪',
+    description: 'Solid heavy entrance door with traditional / modern carving',
+    options: ['Teak', 'Sal', 'Mahogany'],
+    defaultOption: 'Teak',
+    tip: 'First-quality seasoned Burma/First class Teakwood frame and engraved shutter'
+  },
+  // 12. Window grill square rod
+  {
+    id: 'windowGrill',
+    name: 'Window Grill Square Rod',
+    category: 'Doors & Windows',
+    icon: '🛡️',
+    description: 'Safety grills welded into RCC lintels & window reveals',
+    options: ['13mmpolished', '16mm polished'],
+    defaultOption: '13mmpolished',
+    tip: 'Solid MS square rods painted with anti-rust zinc phosphate primer'
+  },
+  // 13. Windows
+  {
+    id: 'windows',
+    name: 'Windows & Glazing',
+    category: 'Doors & Windows',
+    icon: '🪟',
+    description: 'Window frames, mosquito mesh shutters & soundproof glass',
+    options: ['Upvc', 'Sal', 'Mahogany', 'Teak', 'Aluminium'],
+    defaultOption: 'Upvc',
+    tip: 'Multi-chamber German UPVC profile with 5mm toughened Saint-Gobain glass'
+  },
+  // 14. Bedroom doors
+  {
+    id: 'bedroomDoors',
+    name: 'Bedroom Doors',
+    category: 'Doors & Windows',
+    icon: '🚪',
+    description: 'Internal room doors with locks, handles & door stoppers',
+    options: ['Mica(Customised design)', 'Flush door', 'Membrane door', 'Fibre door', 'Upvc'],
+    defaultOption: 'Mica(Customised design)',
+    tip: 'Factory-pressed waterproof core with 1mm designer matte laminate'
+  },
+  // 15. Bathroom doors
+  {
+    id: 'bathroomDoors',
+    name: 'Bathroom Doors',
+    category: 'Doors & Windows',
+    icon: '🚿',
+    description: '100% waterproof, termite-proof moisture-resistant doors',
+    options: ['Pvc', 'Pvc heavy', 'Upvc', 'Fibre', 'Wpc(customised)', 'Frosted Glass'],
+    defaultOption: 'Wpc(customised)',
+    tip: 'High-density Wood Polymer Composite (WPC) with lifetime warranty against water'
+  }
+];

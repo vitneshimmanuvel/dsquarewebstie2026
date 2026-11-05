@@ -18,6 +18,7 @@ import ServicesPage from './components/ServicesPage';
 import AboutPage from './components/AboutPage';
 import ProjectsPage from './components/ProjectsPage';
 import ContactPage from './components/ContactPage';
+import GetQuotePage from './components/GetQuotePage';
 import TestimonialsManager from './components/TestimonialsManager';
 import { ProjectProvider } from './ProjectContext';
 import { NotificationProvider, useNotifications } from './NotificationContext';
@@ -74,6 +75,13 @@ const PublicLayout: React.FC<{
             >
               Services
               <span className={`absolute bottom-0 left-0 h-0.5 bg-brand-primary transition-all duration-300 ${isActive('/services') ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+            </button>
+            <button 
+              onClick={() => navigate('/get-quote')} 
+              className={`transition-colors py-2 relative group ${isActive('/get-quote') ? 'text-brand-primary font-bold' : 'hover:text-brand-primary'}`}
+            >
+              Get Quote
+              <span className={`absolute bottom-0 left-0 h-0.5 bg-brand-primary transition-all duration-300 ${isActive('/get-quote') ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
             </button>
             <button 
               onClick={() => navigate('/about')} 
@@ -394,6 +402,8 @@ const AppContent: React.FC = () => {
             } 
           />
           <Route path="/services" element={<ServicesPage />} />
+          <Route path="/get-quote" element={<GetQuotePage />} />
+          <Route path="/quote" element={<GetQuotePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route 

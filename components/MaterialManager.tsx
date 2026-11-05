@@ -158,7 +158,70 @@ const MaterialManager: React.FC = () => {
             <div className="p-6 space-y-6">
               <div>
                 <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Material Name</label>
-                <input type="text" className="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary outline-none font-semibold" value={formData.item} onChange={e => setFormData({...formData, item: e.target.value})} placeholder="e.g. Cement Bags" />
+                <input 
+                  type="text" 
+                  list="material-presets"
+                  className="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary outline-none font-semibold" 
+                  value={formData.item} 
+                  onChange={e => setFormData({...formData, item: e.target.value})} 
+                  placeholder="e.g. Cement - Ultratech, TMT - Tata..." 
+                />
+                <datalist id="material-presets">
+                  <option value="Cement - Ultratech" />
+                  <option value="Cement - Ramco" />
+                  <option value="Cement - Dalmia" />
+                  <option value="Cement - Chettinad" />
+                  <option value="Cement - ACC" />
+                  <option value="Cement - Maha" />
+                  <option value="Cement - Priya" />
+                  <option value="Cement - Zuari" />
+                  <option value="Cement - JSW" />
+                  <option value="Sand - River sand" />
+                  <option value="Sand - Standard M-sand & P-sand" />
+                  <option value="Sand - Double washed(VSI) M-Sand & P-Sand" />
+                  <option value="Blue metals - Standard" />
+                  <option value="Blue metals - Finest quality(VSI)" />
+                  <option value="TMT rebars - Tata" />
+                  <option value="TMT rebars - JSW" />
+                  <option value="TMT rebars - Vizag" />
+                  <option value="TMT rebars - Jindal Panther" />
+                  <option value="TMT rebars - SSI" />
+                  <option value="TMT rebars - Shyam" />
+                  <option value="TMT rebars - Pulkit" />
+                  <option value="TMT rebars - Prime Gold" />
+                  <option value="TMT rebars - Agni" />
+                  <option value="TMT rebars - ARS" />
+                  <option value="Bricks - 1st class chamber brick" />
+                  <option value="Bricks - Wirecut brick" />
+                  <option value="Bricks - Flyash brick" />
+                  <option value="Bricks - Solid block" />
+                  <option value="Bricks - Porotherm block" />
+                  <option value="Bricks - AAC block" />
+                  <option value="Bricks - Interlock block" />
+                  <option value="Electrical Wires - Finolex" />
+                  <option value="Electrical Wires - RR Kabel" />
+                  <option value="Electrical Wires - Havells" />
+                  <option value="Electrical Wires - Polycab" />
+                  <option value="Switches - Schneider" />
+                  <option value="Switches - Legrand" />
+                  <option value="Plumbing - Astral" />
+                  <option value="Plumbing - Finolex" />
+                  <option value="Plumbing - Supreme" />
+                  <option value="Sanitaryware - Jaquar" />
+                  <option value="Sanitaryware - Kohler" />
+                  <option value="Sanitaryware - Parryware" />
+                  <option value="Sanitaryware - Cera" />
+                  <option value="Tiles - Kajaria" />
+                  <option value="Tiles - Simpolo" />
+                  <option value="Tiles - Somany" />
+                  <option value="Maindoor - Teak" />
+                  <option value="Maindoor - Sal" />
+                  <option value="Maindoor - Mahogany" />
+                  <option value="Windows - UPVC" />
+                  <option value="Windows - Aluminium" />
+                  <option value="Doors - Mica Customised design" />
+                  <option value="Bathroom Doors - WPC Customised" />
+                </datalist>
               </div>
               
               {/* Vendor Selection */}

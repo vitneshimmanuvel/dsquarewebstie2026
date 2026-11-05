@@ -243,12 +243,18 @@ const ServicesPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="pt-6">
+              <div className="pt-6 space-y-3">
+                <a 
+                  href="#/get-quote" 
+                  className="w-full bg-brand-accent text-white py-3.5 rounded-xl font-bold hover:bg-red-700 transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-accent/25 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer text-sm"
+                >
+                  Customize Materials & Get Quote <ArrowRight size={18} />
+                </a>
                 <a 
                   href="#/contact" 
-                  className="w-full bg-brand-accent text-white py-4 rounded-xl font-bold hover:bg-red-700 transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-accent/25 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+                  className="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2 text-xs"
                 >
-                  Request Consultation <ArrowRight size={18} />
+                  Request General Consultation
                 </a>
               </div>
             </div>

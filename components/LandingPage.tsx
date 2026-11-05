@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { API_BASE } from '../AuthContext';
-import { ArrowRight, ChevronLeft, ChevronRight, Star, Quote, HardHat, Compass, FileText, Smartphone, ClipboardCheck, Leaf, Layers, Building2, Shield, Activity, Award, HelpCircle, ChevronDown, Check, Zap, MapPin } from 'lucide-react';
+import { ArrowRight, Calculator, ChevronLeft, ChevronRight, Star, Quote, HardHat, Compass, FileText, Smartphone, ClipboardCheck, Leaf, Layers, Building2, Shield, Activity, Award, HelpCircle, ChevronDown, Check, Zap, MapPin } from 'lucide-react';
 
 interface LandingPageProps {
   onLoginClick: () => void;
@@ -97,16 +97,22 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLoginClick }) => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <button 
-                onClick={onLoginClick} 
+                onClick={() => navigate('/get-quote')} 
                 className="bg-brand-accent text-white px-8 py-4 rounded-xl font-bold hover:bg-red-700 transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-accent/30 hover:-translate-y-0.5"
               >
-                Access Client Portal <ArrowRight size={20} />
+                Get Instant Quote <Calculator size={20} />
+              </button>
+              <button 
+                onClick={onLoginClick} 
+                className="bg-brand-primary text-white px-8 py-4 rounded-xl font-bold hover:bg-brand-800 transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-primary/30 hover:-translate-y-0.5"
+              >
+                Client Portal <ArrowRight size={20} />
               </button>
               <button 
                 onClick={() => navigate('/projects')} 
-                className="px-8 py-4 rounded-xl font-bold text-white border-2 border-white/20 hover:border-white hover:bg-white/10 transition-all hover:-translate-y-0.5"
+                className="px-6 py-4 rounded-xl font-bold text-white border-2 border-white/20 hover:border-white hover:bg-white/10 transition-all hover:-translate-y-0.5"
               >
-                View Projects
+                Projects
               </button>
             </div>
           </div>
@@ -222,7 +228,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLoginClick }) => {
           <div className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
             <div className="h-48 overflow-hidden relative">
               <img 
-                src="https://images.unsplash.com/photo-1558904541-efa8c1a68fc6?auto=format&fit=crop&w=600&q=80" 
+                src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=800&q=80"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80';
+                }} 
                 alt="Accurate Outdoor Landscaping" 
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
               />
@@ -466,7 +475,13 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLoginClick }) => {
         <p className="text-slate-600 font-medium text-base sm:text-lg max-w-xl mx-auto">
           Contact our structural experts to receive a free built-up area layout estimate and establish your private portal tracking workspace.
         </p>
-        <div>
+        <div className="flex flex-wrap items-center justify-center gap-4">
+          <button 
+            onClick={() => navigate('/get-quote')}
+            className="inline-flex items-center gap-2 bg-brand-accent text-white font-bold px-8 py-4 rounded-xl hover:bg-red-700 transition-all shadow-lg shadow-brand-accent/20 hover:-translate-y-0.5 active:translate-y-0"
+          >
+            Calculate Material Quote <Calculator size={20} />
+          </button>
           <button 
             onClick={() => navigate('/contact')}
             className="inline-flex items-center gap-2 bg-brand-primary text-white font-bold px-8 py-4 rounded-xl hover:bg-brand-800 transition-all shadow-lg shadow-brand-primary/20 hover:-translate-y-0.5 active:translate-y-0"
