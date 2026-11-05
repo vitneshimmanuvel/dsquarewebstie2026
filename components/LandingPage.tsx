@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { API_BASE } from '../AuthContext';
-import { ArrowRight, Calculator, ChevronLeft, ChevronRight, Star, Quote, HardHat, Compass, FileText, Smartphone, ClipboardCheck, Leaf, Layers, Building2, Shield, Activity, Award, HelpCircle, ChevronDown, Check, Zap, MapPin } from 'lucide-react';
+import { ArrowRight, Video, Clock, Sparkles, Calculator, ChevronLeft, ChevronRight, Star, Quote, HardHat, Compass, FileText, Smartphone, ClipboardCheck, Leaf, Layers, Building2, Shield, Activity, Award, HelpCircle, ChevronDown, Check, Zap, MapPin } from 'lucide-react';
 
 interface LandingPageProps {
   onLoginClick: () => void;
@@ -20,6 +20,74 @@ const HERO_IMAGES = [
   'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
   'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1200&q=80',
   'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80'
+];
+
+
+interface AdvantageItem {
+  title: string;
+  tag: string;
+  desc: string;
+  img: string;
+  fallbackImg: string;
+  icon: any;
+  features: string[];
+}
+
+const ADVANTAGES_DATA: AdvantageItem[] = [
+  {
+    title: 'Soil Test',
+    tag: 'Foundation Safety',
+    desc: 'Geotechnical core soil tests and bearing capacity audits before footing design. Guarantees zero foundation subsidence and crack-free structures.',
+    img: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=600&q=80',
+    fallbackImg: 'https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&w=600&q=80',
+    icon: Layers,
+    features: ['SBC Lab Report', 'Soil Strata Mapping', 'Engineered Footings']
+  },
+  {
+    title: 'Digital Marking',
+    tag: 'Millimeter Precision',
+    desc: 'Laser-guided total station digital marking on site. Ensures exact boundary alignment, square room angles, and 100% adherence to architectural CAD drawings.',
+    img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80',
+    fallbackImg: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80',
+    icon: Compass,
+    features: ['Total Station Alignment', 'Vastu Coordinate Marking', 'CAD-to-Ground Mapping']
+  },
+  {
+    title: 'Dedicated Mobile Application',
+    tag: 'Real-Time Access',
+    desc: 'Our proprietary D Square Infrazone mobile app keeps you connected 24/7. View material dispatches, workforce attendance, payment milestones, and live photo feeds.',
+    img: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=600&q=80',
+    fallbackImg: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=600&q=80',
+    icon: Smartphone,
+    features: ['Live Site Feeds', 'Invoice Approval', 'Milestone Tracking']
+  },
+  {
+    title: '24/7 CCTV Surveillance',
+    tag: 'Site Security',
+    desc: 'High-definition live camera feeds installed on every construction site. Monitor ongoing RCC casting, material unloading, and night-shift security in real-time.',
+    img: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=600&q=80',
+    fallbackImg: 'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=600&q=80',
+    icon: Video,
+    features: ['Live Streaming', 'Theft Prevention', 'Safety Protocol Monitoring']
+  },
+  {
+    title: 'Daily Reports',
+    tag: 'Complete Transparency',
+    desc: 'Automated daily progress reports delivered directly to your portal. Details artisan attendance, cement bags consumed, steel curing status, and weather conditions.',
+    img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80',
+    fallbackImg: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=600&q=80',
+    icon: ClipboardCheck,
+    features: ['Worker Headcount', 'Material Inflow Logs', 'Civil Engineer Sign-off']
+  },
+  {
+    title: 'Work Progress Based on Timeline',
+    tag: 'Zero Delays',
+    desc: 'Strict Gantt-chart scheduled construction milestones. Every phase—from foundation and roof casting to tile finishing—is delivered according to agreed deadlines.',
+    img: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=80',
+    fallbackImg: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80',
+    icon: Clock,
+    features: ['Milestone Deadlines', 'Stage-Wise Verification', 'On-Time Handover']
+  }
 ];
 
 const LandingPage: React.FC<LandingPageProps> = ({ onLoginClick }) => {
@@ -120,6 +188,89 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLoginClick }) => {
 
         </div>
       </section>
+
+      {/* Advantages Section - Added directly below Hero */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 bg-brand-accent/10 border border-brand-accent/20 text-brand-accent px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4 animate-scale-up">
+            <Sparkles size={13} className="text-brand-accent animate-pulse" />
+            Key Construction Advantages
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-brand-900 tracking-tight leading-tight">
+            Advantages of Choosing <br className="hidden sm:inline" />
+            <span className="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-brand-accent to-red-600">
+              D Square Infrazone
+            </span>
+          </h2>
+          <p className="text-slate-600 mt-4 text-base sm:text-lg font-medium">
+            From precision soil tests to 24/7 CCTV surveillance and dedicated mobile tracking—every project is executed with turnkey assurance.
+          </p>
+        </div>
+
+        {/* 6 Advantages Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {ADVANTAGES_DATA.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <div 
+                key={idx}
+                className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
+              >
+                <div>
+                  {/* Image header with overlay badge */}
+                  <div className="h-52 overflow-hidden relative">
+                    <img 
+                      src={item.img} 
+                      alt={item.title} 
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = item.fallbackImg;
+                      }}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/20 to-transparent"></div>
+                    
+                    {/* Floating Icon badge */}
+                    <div className="absolute top-4 left-4 p-3 bg-brand-primary/95 text-white rounded-2xl shadow-md backdrop-blur-sm group-hover:bg-brand-accent transition-colors duration-300">
+                      <Icon size={20} />
+                    </div>
+
+                    {/* Tag badge on image */}
+                    <span className="absolute bottom-3 left-4 bg-white/90 backdrop-blur-sm text-brand-900 text-[10px] font-black uppercase px-2.5 py-1 rounded-lg tracking-wider shadow-sm">
+                      {item.tag}
+                    </span>
+                  </div>
+
+                  {/* Card Content */}
+                  <div className="p-6 space-y-3">
+                    <h3 className="text-xl font-extrabold text-brand-900 group-hover:text-brand-accent transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-medium">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Features Footer Pills */}
+                <div className="p-6 pt-0 border-t border-slate-50">
+                  <div className="flex flex-wrap gap-1.5 pt-4">
+                    {item.features.map((feat, fIdx) => (
+                      <span 
+                        key={fIdx}
+                        className="bg-slate-50 border border-slate-200/80 text-slate-700 text-[10px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1"
+                      >
+                        <Check size={10} className="text-brand-accent" strokeWidth={3} />
+                        {feat}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
 
       {/* Why Choose Us Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
